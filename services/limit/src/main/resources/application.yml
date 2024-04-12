@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: services-limit
+  config:
+    import: optional:configserver:http://config:8888
+
+limits:
+  minimum: 5
+  maximum: 995

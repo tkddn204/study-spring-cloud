@@ -1,0 +1,19 @@
+plugins {
+    id 'com.palantir.docker' version '0.36.0'
+}
+
+group = 'net.rightpair.cloud.services'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+}
+
+docker {
+    name project.name + ":" + version
+    dockerfile file(rootProject.projectDir.toPath().resolve('Dockerfile'))
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+}

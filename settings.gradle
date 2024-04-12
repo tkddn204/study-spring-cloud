@@ -1,0 +1,8 @@
+rootProject.name = 'study-spring-cloud'
+include 'services'
+include 'services:limit'
+findProject(':services:limit')?.name = 'limit'
+include 'managements'
+include 'managements:config'
+findProject(':managements:config')?.name = 'config'
+

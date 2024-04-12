@@ -1,0 +1,43 @@
+# Docker Compose
+
+version: '3'
+
+services:
+  # services
+  limit:
+    container_name: limit
+    image: limit:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      config:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
+  # managements
+  config:
+    container_name: config
+    image: config:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=file:/local-config
+    volumes:
+      - ./local-config-repo:/local-config
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://config:8888/actuator/health | grep UP || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  study-spring-cloud-networks:
+    driver: bridge

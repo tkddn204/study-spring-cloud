@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'net.rightpair'
+version = '0.0.1-SNAPSHOT'
+
+bootRun.enabled = false
+bootJar.enabled = false
+bootBuildImage.enabled = false
+
+subprojects {
+    java.sourceCompatibility = '17'
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    jar.enabled = false
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        set('springCloudVersion', "2023.0.1")
+    }
+
+    dependencies {
+        implementation 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    sourceSets {
+        test {
+            java.srcDirs = ['src/test/java/unit', 'src/test/java/integration']
+        }
+    }
+
+    tasks.named('test') {
+        systemProperty "spring.profiles.active", "test"
+        useJUnitPlatform()
+    }
+}
