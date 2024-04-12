@@ -4,6 +4,35 @@ version: '3'
 
 services:
   # services
+
+  currency-exchange:
+    container_name: currency-exchange
+    image: currency-exchange:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8000:8000"
+    depends_on:
+      config:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
+  currency-conversion:
+    container_name: currency-conversion
+    image: currency-conversion:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8100:8100"
+    depends_on:
+      config:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+
   limit:
     container_name: limit
     image: limit:0.0.1-SNAPSHOT

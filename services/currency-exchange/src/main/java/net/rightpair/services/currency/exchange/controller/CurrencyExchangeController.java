@@ -1,7 +1,7 @@
 package net.rightpair.services.currency.exchange.controller;
 
 import lombok.RequiredArgsConstructor;
-import net.rightpair.services.currency.exchange.dto.CurrencyExchangeResponse;
+import net.rightpair.services.currency.common.dto.CurrencyExchangeResponse;
 import net.rightpair.services.currency.exchange.service.CurrencyExchangeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

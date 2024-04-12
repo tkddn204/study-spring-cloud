@@ -1,4 +1,4 @@
-package net.rightpair.services.currency.exchange.entity;
+package net.rightpair.services.currency.conversion.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CurrencyExchange {
+public class CurrencyConversion {
 
     @Id
     @GeneratedValue
@@ -24,12 +24,14 @@ public class CurrencyExchange {
     @Column(name="currency_to")
     private String to;
     private BigDecimal conversionMultiple;
-    private String environment;
+    private BigDecimal quantity;
+    private BigDecimal totalCalculatedAmount;
 
-    public CurrencyExchange(String from, String to, BigDecimal conversionMultiple, String environment) {
+    public CurrencyConversion(String from, String to, BigDecimal conversionMultiple, BigDecimal quantity, BigDecimal totalCalculatedAmount) {
         this.from = from;
         this.to = to;
         this.conversionMultiple = conversionMultiple;
-        this.environment = environment;
+        this.quantity = quantity;
+        this.totalCalculatedAmount = totalCalculatedAmount;
     }
 }

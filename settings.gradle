@@ -4,7 +4,12 @@ include 'services:limit'
 findProject(':services:limit')?.name = 'limit'
 include 'services:currency-exchange'
 findProject(':services:currency-exchange')?.name = 'currency-exchange'
+include 'services:currency-conversion'
+findProject(':services:currency-conversion')?.name = 'currency-conversion'
 
 include 'managements'
 include 'managements:config'
 findProject(':managements:config')?.name = 'config'
+include 'services:currency-common'
+findProject(':services:currency-common')?.name = 'currency-common'
+

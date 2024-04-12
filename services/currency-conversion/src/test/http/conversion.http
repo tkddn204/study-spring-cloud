@@ -1,0 +1,5 @@
+### Get Currency-Conversion
+GET http://localhost:8100/currency/conversion?
+    from=USD&
+    to=KOR&
+    quantity=10000

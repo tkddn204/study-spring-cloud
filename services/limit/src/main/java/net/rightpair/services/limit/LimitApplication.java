@@ -1,4 +1,4 @@
-package net.rightpair.cloud.services.limit;
+package net.rightpair.services.limit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,0 +1,4 @@
+### GET Currency-Exchange
+GET http://localhost:8000/currency/exchange?
+    from=USD&
+    to=KOR

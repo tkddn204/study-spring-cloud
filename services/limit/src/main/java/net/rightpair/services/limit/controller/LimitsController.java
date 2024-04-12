@@ -1,8 +1,8 @@
-package net.rightpair.cloud.services.limit.controller;
+package net.rightpair.services.limit.controller;
 
 import lombok.RequiredArgsConstructor;
-import net.rightpair.cloud.services.limit.config.LimitsConfig;
-import net.rightpair.cloud.services.limit.dto.Limits;
+import net.rightpair.services.limit.config.LimitsConfig;
+import net.rightpair.services.limit.dto.Limits;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

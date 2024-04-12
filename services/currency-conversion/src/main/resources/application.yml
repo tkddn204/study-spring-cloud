@@ -1,0 +1,27 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: services-currency-exchange
+  config:
+    import: optional:configserver:http://config:8888
+  cloud:
+    openfeign:
+      client:
+        config:
+          currency-exchange:
+            url: http://localhost:8000
+            logger-level: basic
+
+---
+
+spring:
+  profiles:
+    include: prod
+  cloud:
+    openfeign:
+      client:
+        config:
+          currency-exchange:
+            url: http://currency-exchange:8000
+

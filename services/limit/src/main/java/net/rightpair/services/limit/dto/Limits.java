@@ -1,4 +1,4 @@
-package net.rightpair.cloud.services.limit.dto;
+package net.rightpair.services.limit.dto;
 
 public record Limits(
         Integer minimum,

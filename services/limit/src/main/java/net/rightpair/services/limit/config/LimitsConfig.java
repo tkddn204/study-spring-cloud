@@ -1,4 +1,4 @@
-package net.rightpair.cloud.services.limit.config;
+package net.rightpair.services.limit.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

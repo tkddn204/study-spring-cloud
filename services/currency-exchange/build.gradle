@@ -2,10 +2,11 @@ plugins {
     id 'com.palantir.docker' version '0.36.0'
 }
 
-group = 'net.rightpair.cloud.services'
+group = 'net.rightpair.services.currency'
 version = '0.0.1-SNAPSHOT'
 
 dependencies {
+    implementation project(":services:currency-common")
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

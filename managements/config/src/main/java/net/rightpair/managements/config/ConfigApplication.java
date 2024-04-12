@@ -1,4 +1,4 @@
-package net.rightpair.cloud.managements.config;
+package net.rightpair.managements.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
