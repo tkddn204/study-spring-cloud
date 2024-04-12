@@ -2,7 +2,9 @@ rootProject.name = 'study-spring-cloud'
 include 'services'
 include 'services:limit'
 findProject(':services:limit')?.name = 'limit'
+include 'services:currency-exchange'
+findProject(':services:currency-exchange')?.name = 'currency-exchange'
+
 include 'managements'
 include 'managements:config'
 findProject(':managements:config')?.name = 'config'
-
