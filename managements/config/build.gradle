@@ -10,9 +10,4 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'
 }
 
-docker {
-    name project.name + ":" + version
-    dockerfile file(rootProject.projectDir.toPath().resolve('Dockerfile'))
-    files tasks.bootJar.outputs.files
-    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
-}
+apply from: rootPath.resolve('docker.gradle')

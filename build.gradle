@@ -26,6 +26,7 @@ subprojects {
 
     ext {
         set('springCloudVersion', "2023.0.1")
+        rootPath = rootProject.projectDir.toPath()
     }
 
     dependencies {
