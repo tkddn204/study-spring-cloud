@@ -20,6 +20,22 @@ services:
         condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+  currency-exchange-2:
+    container_name: currency-exchange-2
+    image: currency-exchange:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8001:8001"
+    depends_on:
+      config:
+        condition: service_healthy
+      eureka:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SERVER_PORT=8001
 
   currency-conversion:
     container_name: currency-conversion
@@ -85,6 +101,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  gateway:
+    container_name: gateway
+    image: gateway:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8765:8765"
+    depends_on:
+      config:
+        condition: service_healthy
+      eureka:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
 
 networks:
   study-spring-cloud-networks:

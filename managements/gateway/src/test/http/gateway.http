@@ -1,0 +1,19 @@
+### Get Currency-Conversion
+#GET http://localhost:8765/services-currency-conversion/currency/conversion?
+#    from=USD&
+#    to=KOR&
+#    quantity=10000
+# 설정 변경 후
+GET http://localhost:8765/currency/conversion?
+    from=USD&
+    to=KOR&
+    quantity=10000
+
+### GET Currency-Exchange
+#GET http://localhost:8765/services-currency-exchange/currency/exchange?
+#    from=USD&
+#    to=KOR
+# 설정 변경 후
+GET http://localhost:8765/currency/exchange?
+    from=USD&
+    to=KOR

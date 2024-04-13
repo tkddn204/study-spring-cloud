@@ -14,4 +14,6 @@ include 'services:currency-common'
 findProject(':services:currency-common')?.name = 'currency-common'
 include 'managements:eureka'
 findProject(':managements:eureka')?.name = 'eureka'
+include 'managements:gateway'
+findProject(':managements:gateway')?.name = 'gateway'
 

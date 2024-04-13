@@ -1,16 +1,17 @@
 spring:
   application:
-    name: managements-eureka
+    name: managements-gateway
   config:
     import: optional:configserver:http://config:8888
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
 
 server:
-  port: 8761
-
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
+  port: 8765
 
 ---
 
@@ -23,7 +24,5 @@ eureka:
   instance:
     hostname: eureka
   client:
-    register-with-eureka: false
-    fetch-registry: false
     serviceUrl:
       defaultZone: http://eureka:8761/eureka
