@@ -16,6 +16,8 @@ services:
     depends_on:
       config:
         condition: service_healthy
+      eureka:
+        condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=prod
 
@@ -29,6 +31,8 @@ services:
       - "8100:8100"
     depends_on:
       config:
+        condition: service_healthy
+      eureka:
         condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=prod
@@ -63,6 +67,21 @@ services:
       - ./local-config-repo:/local-config
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://config:8888/actuator/health | grep UP || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  eureka:
+    container_name: eureka
+    image: eureka:0.0.1-SNAPSHOT
+    networks:
+      - study-spring-cloud-networks
+    restart: on-failure
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://eureka:8761/actuator/health | grep UP || exit 1" ]
       interval: 5s
       timeout: 5s
       retries: 5
